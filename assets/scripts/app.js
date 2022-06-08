@@ -19,44 +19,74 @@ function writeOutput(operator, prevResult, calcNumb, errorMessage=null){
 }
 
 
-//add function
-function add(){
+
+function calcResult(mode){
+    if(mode !== 'add' && mode !== 'sub' && mode !== 'div' && mode !== 'mult'){
+        writeOutput('', null, null, true);
+        return
+    }
+
     const enteredNumber = getUserInput();
     const prevResult = currentResult;
-    currentResult = currentResult + enteredNumber;
-    writeOutput('+', prevResult, enteredNumber);
+    let mathOperator;
+
+    if(mode === 'add'){
+        
+        currentResult = currentResult + enteredNumber;
+        mathOperator = '+'
+    }else if(mode === 'sub'){
+
+        if(enteredNumber > prevResult){
+            writeOutput('-', prevResult, enteredNumber, true);
+            return
+        }else{
+            currentResult = currentResult - enteredNumber;
+            mathOperator = '-'
+        }
+
+    }else if(mode === 'div'){
+
+        if(enteredNumber === 0){
+            writeOutput(null, null, null, true)
+            return
+        }else{
+            currentResult = currentResult / enteredNumber;
+            mathOperator = '/'
+        }
+
+    }else if(mode === 'mult'){
+        currentResult = currentResult * enteredNumber;
+        mathOperator = "*"
+    }
+    // else{
+    //     writeOutput('', prevResult, enteredNumber, true);  
+    //     return 
+    // }
+
+    writeOutput(mathOperator, prevResult, enteredNumber);
+}
+
+
+
+
+//add function
+function add(){
+    calcResult('add');
 }
 
 //subtraction function
 function subtract(){
-    const enteredNumber = getUserInput();
-    const prevResult = currentResult;
-    if(enteredNumber > prevResult){
-        writeOutput('-', prevResult, enteredNumber, true);
-    }else{
-        currentResult = currentResult - enteredNumber;
-        writeOutput('-', prevResult, enteredNumber);
-    }
+    calcResult('sub');
 }
 
 //multiplication function
 function multiply(){
-    const enteredNumber = getUserInput();
-    const prevResult = currentResult;
-    currentResult = currentResult * enteredNumber;
-    writeOutput('*', prevResult, enteredNumber);
+    calcResult('mult');
 }
 
 //division function
 function division(){
-    const enteredNumber = getUserInput();
-    const prevResult = currentResult;
-    if(enteredNumber === 0){
-        writeOutput(null, null, null, true)
-    }else{
-        currentResult = currentResult / enteredNumber;
-        writeOutput('/', prevResult, enteredNumber, false);
-    }
+    calcResult('div');
 }
 
 //addition event handler

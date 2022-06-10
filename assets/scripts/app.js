@@ -89,14 +89,14 @@ function division(){
     calcResult('div');
 }
 
-//addition event handler
-addBtn.addEventListener('click', add); //indirect calling of a function - callback function 
+// //addition event handler
+// addBtn.addEventListener('click', add); //indirect calling of a function - callback function 
 
-//subtraction event handler
-subtractBtn.addEventListener('click', subtract); //this keyword points to the event that called the function
+// //subtraction event handler
+// subtractBtn.addEventListener('click', subtract); //this keyword points to the event that called the function
 
-//multiplication event handler
-multiplyBtn.addEventListener('click', multiply);
+// //multiplication event handler
+// multiplyBtn.addEventListener('click', multiply);
 
-//division event handler
-divideBtn.addEventListener('click', division)
+// //division event handler
+// divideBtn.addEventListener('click', division)

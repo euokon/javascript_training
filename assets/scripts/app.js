@@ -90,10 +90,10 @@ function division(){
 }
 
 //addition event handler
-addBtn.addEventListener('click', add);
+addBtn.addEventListener('click', add); //indirect calling of a function - callback function 
 
 //subtraction event handler
-subtractBtn.addEventListener('click', subtract);
+subtractBtn.addEventListener('click', subtract); //this keyword points to the event that called the function
 
 //multiplication event handler
 multiplyBtn.addEventListener('click', multiply);
